@@ -21,9 +21,9 @@ public class SoundWave : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-		if (other.gameObject.CompareTag("Outer Wall"))
-		{
-			Destroy(gameObject);
-		}
+		// if (other.gameObject.CompareTag("Outer Wall"))
+		// {
+		// 	Destroy(gameObject);
+		// }
     }
 }

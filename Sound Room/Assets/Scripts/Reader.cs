@@ -26,15 +26,15 @@ public class Reader : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Wall Note"))
-		{
-			other.GetComponent<AudioSource>().Play();
-		}
+		// if (other.CompareTag("Wall Note"))
+		// {
+		// 	other.GetComponent<AudioSource>().Play();
+		// }
 
-		if (other.CompareTag("Reader End"))
-		{
-			Reset();
-		}
+		// if (other.CompareTag("Reader End"))
+		// {
+		// 	Reset();
+		// }
 	}
 
 	public void Read()

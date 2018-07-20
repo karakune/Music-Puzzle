@@ -21,11 +21,11 @@ public class SoundBouncer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Sound Wave"))
-        {
-            note.Play();
-            //Change the direction of the Sound Wave
-            other.transform.rotation = Quaternion.Euler(newRotation);
-        }
+        // if (other.CompareTag("Sound Wave"))
+        // {
+        //     note.Play();
+        //     //Change the direction of the Sound Wave
+        //     other.transform.rotation = Quaternion.Euler(newRotation);
+        // }
     }
 }

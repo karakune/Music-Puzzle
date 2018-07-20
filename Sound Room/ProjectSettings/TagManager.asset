@@ -4,19 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Sound Wave
-  - Wall Note
-  - Reader End
-  - Outer Wall
-  - Note Area
-  - Bouncer A
-  - Bouncer B
-  - Bouncer C
-  - Bouncer D
-  - Bouncer E
-  - Bouncer F
-  - Bouncer G
-  - Bouncer C2
+  - Undefined
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -26,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - 
   - 
   - 
   - 

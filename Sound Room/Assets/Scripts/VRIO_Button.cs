@@ -24,12 +24,12 @@ public class VRIO_Button : VRInteractableObject
         }
         else if (CompareTag("Generator Button"))
         {
-            GameObject.Find("Sound Generator").GetComponent<SoundGenerator>().SpawnSoundWave();
+            GameObject.Find("Sound Generator").GetComponent<SoundGenerator>().ChangeIsSpawningSoundWave();
         }
         else if (CompareTag("Both Button"))
         {
             GameObject.Find("Reader").GetComponent<Reader>().Read();
-            GameObject.Find("Sound Generator").GetComponent<SoundGenerator>().SpawnSoundWave();
+            GameObject.Find("Sound Generator").GetComponent<SoundGenerator>().ForceSpawnSoundWave();
         }
         else 
         {

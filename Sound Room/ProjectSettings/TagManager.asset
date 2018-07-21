@@ -21,6 +21,7 @@ TagManager:
   - Reader Button
   - Generator Button
   - Both Button
+  - Killzone
   layers:
   - Default
   - TransparentFX

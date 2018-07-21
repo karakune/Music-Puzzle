@@ -6,19 +6,36 @@ using Valve.VR;
 public class VRIO_Button : VRInteractableObject
 {
     public EVRButtonId buttonToTrigger = EVRButtonId.k_EButton_SteamVR_Trigger;
-	public Transform button;
-	public Vector3 currentButtonDestination;
-	public float buttonClickSpeed;
-	public Vector3 buttonStartPos;
-	public Vector3 buttonDownPos;
+    public Transform button;
+    public Vector3 currentButtonDestination;
+    public float buttonClickSpeed;
+    public Vector3 buttonStartPos;
+    public Vector3 buttonDownPos;
 
- 
-protected void MethodToTrigger()
-{
-	//This method will be called any time the button is pressed,
-	//and the event is Invoked. Note that since the event is static,
-	//this method will fire any time ANY button of that type is pressed.
-}
+
+    protected void MethodToTrigger()
+    {
+        //This method will be called any time the button is pressed,
+        //and the event is Invoked. Note that since the event is static,
+        //this method will fire any time ANY button of that type is pressed.
+        if (CompareTag("Reader Button"))
+        {
+            GameObject.Find("Reader").GetComponent<Reader>().Read();
+        }
+        else if (CompareTag("Generator Button"))
+        {
+            GameObject.Find("Sound Generator").GetComponent<SoundGenerator>().SpawnSoundWave();
+        }
+        else if (CompareTag("Both Button"))
+        {
+            GameObject.Find("Reader").GetComponent<Reader>().Read();
+            GameObject.Find("Sound Generator").GetComponent<SoundGenerator>().SpawnSoundWave();
+        }
+        else 
+        {
+            Debug.LogError("This button's tag is missing or there's no action configured for it.");
+        }
+    }
 
     public void Update()
     {
@@ -41,8 +58,8 @@ protected void MethodToTrigger()
             //Set button's destination position to the "down" position
             currentButtonDestination = buttonDownPos;
 
-			MethodToTrigger();
-            
+            MethodToTrigger();
+
         }
     }
 
@@ -55,5 +72,5 @@ protected void MethodToTrigger()
         }
     }
 
-    
+
 }

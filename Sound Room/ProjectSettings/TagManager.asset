@@ -4,8 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Undefined
   - Floor
+  - Outer Wall
+  - Reader End
+  - Wall Note
+  - Sound Wave
+  - Note Area
+  - Bouncer A
+  - Bouncer B
+  - Bouncer C
+  - Bouncer C2
+  - Bouncer D
+  - Bouncer E
+  - Bouncer F
+  - Bouncer G
+  - Reader Button
+  - Generator Button
+  - Both Button
   layers:
   - Default
   - TransparentFX

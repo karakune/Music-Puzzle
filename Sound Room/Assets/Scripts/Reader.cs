@@ -13,7 +13,7 @@ public class Reader : MonoBehaviour {
 	void Start () {
 		initialPosition = transform.position;
 		//FIXME: remove this
-		Read();
+		// Read();
 	}
 	
 	// Update is called once per frame
@@ -26,19 +26,20 @@ public class Reader : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		// if (other.CompareTag("Wall Note"))
-		// {
-		// 	other.GetComponent<AudioSource>().Play();
-		// }
+		if (other.CompareTag("Wall Note"))
+		{
+			other.GetComponent<AudioSource>().Play();
+		}
 
-		// if (other.CompareTag("Reader End"))
-		// {
-		// 	Reset();
-		// }
+		if (other.CompareTag("Reader End"))
+		{
+			Reset();
+		}
 	}
 
 	public void Read()
 	{
+		Reset();
 		isReading = true;
 	}
 

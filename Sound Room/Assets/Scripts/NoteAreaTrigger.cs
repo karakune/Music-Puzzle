@@ -70,10 +70,10 @@ public class NoteAreaTrigger : MonoBehaviour
 		if (bouncersInTrigger.Count == 1)
         {
 			//if it's the right kind of bouncer
-			// if (bouncersInTrigger[0].CompareTag("Bouncer " + desiredNote))
-			// {
-			// 	return true;
-			// }
+			if (bouncersInTrigger[0].CompareTag("Bouncer " + desiredNote))
+			{
+				return true;
+			}
         }
         return false;
 	}

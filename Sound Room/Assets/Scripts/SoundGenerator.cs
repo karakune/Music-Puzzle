@@ -13,7 +13,7 @@ public class SoundGenerator : MonoBehaviour {
 		InvokeRepeating("SpawnSoundWave", 0, timeBetweenSpawns);
 	}
 
-	void SpawnSoundWave()
+	public void SpawnSoundWave()
 	{
 		Instantiate(soundWavePrefab, transform.position + soundWaveSpawnLocation, new Quaternion(), transform);
 	}

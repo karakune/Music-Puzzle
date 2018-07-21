@@ -21,9 +21,18 @@ public class SoundWave : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-		// if (other.gameObject.CompareTag("Outer Wall"))
-		// {
-		// 	Destroy(gameObject);
-		// }
+		if (other.gameObject.CompareTag("Outer Wall"))
+		{
+			Destroy(gameObject);
+		}
+        //if the object is actually a bouncer
+        if (other.gameObject.tag.Contains("Bouncer "))
+        {
+            other.gameObject.GetComponent<AudioSource>().Play();
+
+            //We're dropping this feature for now
+            //Change the direction of the Sound Wave
+            // transform.rotation = Quaternion.Euler(other.gameObject.GeComponent<SoundBouncer>().newRotation);
+        }
     }
 }

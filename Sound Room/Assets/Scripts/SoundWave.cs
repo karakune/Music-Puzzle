@@ -6,11 +6,12 @@ public class SoundWave : MonoBehaviour
 {
 
     public float speed;
+    int validTriggers;
 
     // Use this for initialization
     void Start()
     {
-
+        validTriggers = 0;
     }
 
     // Update is called once per frame
@@ -21,8 +22,20 @@ public class SoundWave : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Note Area"))
+        {
+            if (other.GetComponent<NoteAreaTrigger>().isNoteValid)
+            {
+                validTriggers++;
+            }
+        }
 		if (other.gameObject.CompareTag("Outer Wall"))
 		{
+            GameController gc = GameObject.Find("GameController").GetComponent<GameController>();
+            if (gc.noteAreas.Length == validTriggers)
+            {
+                gc.AnnounceVictory();
+            }
 			Destroy(gameObject);
 		}
         //if the object is actually a bouncer

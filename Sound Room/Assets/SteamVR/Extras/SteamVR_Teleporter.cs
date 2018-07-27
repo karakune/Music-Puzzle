@@ -43,6 +43,8 @@ public class SteamVR_Teleporter : MonoBehaviour
 
     void DoClick(object sender, ClickedEventArgs e)
     {
+        RaycastHit hitInfo;
+        Ray ray = new Ray(this.transform.position, transform.forward);
         if (teleportOnClick)
         {
             // First get the current Transform of the the reference space (i.e. the Play Area, e.g. CameraRig prefab)
@@ -56,30 +58,20 @@ public class SteamVR_Teleporter : MonoBehaviour
             // Create a plane at the Y position of the Play Area
             // Then create a Ray from the origin of the controller in the direction that the controller is pointing
             Plane plane = new Plane(Vector3.up, -refY);
-            Ray ray = new Ray(this.transform.position, transform.forward);
 
             // Set defaults
             bool hasGroundTarget = false;
             float dist = 0f;
             if (teleportType == TeleportType.TeleportTypeUseTerrain) // If we picked to use the terrain
             {
-                RaycastHit hitInfo;
                 TerrainCollider tc = Terrain.activeTerrain.GetComponent<TerrainCollider>();
                 hasGroundTarget = tc.Raycast(ray, out hitInfo, 1000f);
                 dist = hitInfo.distance;
             }
             else if (teleportType == TeleportType.TeleportTypeUseCollider) // If we picked to use the collider
             {
-                RaycastHit hitInfo;
-                hasGroundTarget = Physics.Raycast(ray, out hitInfo) &&  hitInfo.transform.gameObject.CompareTag("Floor");
-				dist = hitInfo.distance;
-                
-                //WARNING: do as I say, not as I do. This shouldn't belong here at all
-                //assuming we're not hitting the floor, check if we're hitting a menu Item
-                if (Physics.Raycast(ray, out hitInfo) && hitInfo.transform.gameObject.CompareTag("Menu Item"))
-                {
-                    hitInfo.transform.gameObject.GetComponent<MenuItem>().Navigate();
-                }
+                hasGroundTarget = Physics.Raycast(ray, out hitInfo) && hitInfo.transform.gameObject.CompareTag("Floor");
+                dist = hitInfo.distance;
             }
             else // If we're just staying flat on the current Y axis
             {
@@ -99,6 +91,13 @@ public class SteamVR_Teleporter : MonoBehaviour
                 // currentReferencePosition + translateVector = finalPosition
                 t.position = t.position + (ray.origin + (ray.direction * dist)) - headPosOnGround;
             }
+        }
+
+        //WARNING: do as I say, not as I do. This shouldn't belong here at all
+        //assuming we're not hitting the floor, check if we're hitting a menu Item
+        if (Physics.Raycast(ray, out hitInfo) && hitInfo.transform.gameObject.CompareTag("Menu Item"))
+        {
+            hitInfo.transform.gameObject.GetComponent<MenuItem>().Navigate();
         }
     }
 }

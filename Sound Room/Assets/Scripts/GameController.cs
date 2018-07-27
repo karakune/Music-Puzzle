@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public GameObject[] noteAreas;
 	public bool isGameOver;
 	public TextMesh chronometer;
+	public GameObject winText;
 
 	private float startTime;
 
@@ -37,5 +38,6 @@ public class GameController : MonoBehaviour
 			Destroy(sw);
 		}
 		GetComponent<AudioSource>().Play();
+		winText.SetActive(true);
 	}
 }

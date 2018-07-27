@@ -74,6 +74,12 @@ public class SteamVR_Teleporter : MonoBehaviour
                 hasGroundTarget = Physics.Raycast(ray, out hitInfo) &&  hitInfo.transform.gameObject.CompareTag("Floor");
 				dist = hitInfo.distance;
                 
+                //WARNING: do as I say, not as I do. This shouldn't belong here at all
+                //assuming we're not hitting the floor, check if we're hitting a menu Item
+                if (Physics.Raycast(ray, out hitInfo) && hitInfo.transform.gameObject.CompareTag("Menu Item"))
+                {
+                    hitInfo.transform.gameObject.GetComponent<MenuItem>().Navigate();
+                }
             }
             else // If we're just staying flat on the current Y axis
             {

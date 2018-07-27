@@ -22,6 +22,7 @@ TagManager:
   - Generator Button
   - Both Button
   - Killzone
+  - Menu Item
   layers:
   - Default
   - TransparentFX

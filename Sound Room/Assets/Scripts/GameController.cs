@@ -8,11 +8,14 @@ public class GameController : MonoBehaviour
 	public bool isGameOver;
 	public TextMesh chronometer;
 
+	private float startTime;
+
     // Use this for initialization
     void Start()
     {
         noteAreas = GameObject.FindGameObjectsWithTag("Note Area");
 		isGameOver = false;
+		startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -20,7 +23,7 @@ public class GameController : MonoBehaviour
     {
 		if (!isGameOver)
 		{
-			chronometer.text = Time.time.ToString("F2");
+			chronometer.text = (Time.time - startTime).ToString("F2");
 		}
     }
 
